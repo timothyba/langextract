@@ -315,6 +315,12 @@ LangExtract excels at extracting structured medical information from clinical te
 
 **[View Medication Examples →](https://github.com/google/langextract/blob/main/docs/examples/medication_examples.md)**
 
+### Physical Therapy Note Extraction
+
+This example shows how LangExtract can parse multiple clinical documents (discharge summary, therapy notes, imaging reports) to extract key information for a physical therapist's initial evaluation. It demonstrates complex entity and relationship extraction in a real-world healthcare scenario.
+
+**[View Physical Therapy Example →](https://github.com/google/langextract/blob/main/docs/examples/physical_therapy_example.md)**
+
 ### Radiology Report Structuring: RadExtract
 
 Explore RadExtract, a live interactive demo on HuggingFace Spaces that shows how LangExtract can automatically structure radiology reports. Try it directly in your browser with no setup required.
