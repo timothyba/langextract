@@ -113,7 +113,7 @@ class OllamaLanguageModel(BaseLanguageModel):
 
   def __init__(
       self,
-      model_id: str,
+      model_id: str = 'gpt-oss:120b',
       model_url: str = _OLLAMA_DEFAULT_MODEL_URL,
       structured_output_format: str = 'json',
       constraint: schema.Constraint = schema.Constraint(),

@@ -60,7 +60,7 @@ def extract(
     text_or_documents: str | data.Document | Iterable[data.Document],
     prompt_description: str | None = None,
     examples: Sequence[data.ExampleData] | None = None,
-    model_id: str = "gemini-2.5-flash",
+    model_id: str | None = None,
     api_key: str | None = None,
     language_model_type: Type[LanguageModelT] = inference.GeminiLanguageModel,
     format_type: data.FormatType = data.FormatType.JSON,
@@ -190,6 +190,21 @@ def extract(
       and language_model_type == inference.GeminiLanguageModel
   ):
     model_schema = schema.GeminiSchema.from_examples(prompt_template.examples)
+
+  if model_id is None:
+    if language_model_type == inference.OllamaLanguageModel:
+      model_id = "gpt-oss:120b"
+    elif language_model_type == inference.GeminiLanguageModel:
+      model_id = "gemini-2.5-flash"
+    elif language_model_type == inference.OpenAILanguageModel:
+      model_id = "gpt-4o-mini"
+    else:
+      # We should not get here if the language_model_type is one of the
+      # supported types.
+      raise ValueError(
+          "Could not determine a default model_id for the given"
+          " language_model_type."
+      )
 
   if not api_key:
     api_key = os.environ.get("LANGEXTRACT_API_KEY")
